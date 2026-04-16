@@ -137,3 +137,35 @@ standalone components
 route-level provider scoping when helpful
 
 That gives you fewer files, clearer dependencies, and better lazy-loading ergonomics.
+
+Route-level lazy loading should be the default
+
+Angular’s docs recommend eager loading for primary landing pages and lazy loading for most other routes. Angular also ships a migration specifically for lazy-loaded routes.
+
+A strong pattern is:
+
+// app.routes.ts
+export const appRoutes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./core/layout/shell.component').then(m => m.ShellComponent),
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./features/dashboard/routes').then(m => m.DASHBOARD_ROUTES),
+      },
+      {
+        path: 'customers',
+        loadChildren: () =>
+          import('./features/customers/routes').then(m => m.CUSTOMERS_ROUTES),
+      },
+    ],
+  },
+];
