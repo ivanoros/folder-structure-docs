@@ -169,3 +169,25 @@ export const appRoutes: Routes = [
     ],
   },
 ];
+
+And inside each feature:
+
+// features/customers/routes.ts
+export const CUSTOMERS_ROUTES: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./pages/customer-list-page.component').then(
+        m => m.CustomerListPageComponent
+      ),
+  },
+  {
+    path: ':id',
+    loadComponent: () =>
+      import('./pages/customer-detail-page.component').then(
+        m => m.CustomerDetailPageComponent
+      ),
+  },
+];
+
+This keeps features isolated and makes code splitting natural.
