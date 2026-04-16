@@ -529,5 +529,3 @@ Put it in state.
 My recommendation in one sentence
 
 For Angular 21, build standalone, feature-first, route-lazy-loaded applications, with thin components, feature-scoped state, a small core, and a very selective shared layer.
-
-I can also turn this into a copy-paste Angular 21 starter folder structure with sample files.

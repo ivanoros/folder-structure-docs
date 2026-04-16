@@ -1,0 +1,21 @@
+src/
+  main.ts
+  styles.css
+  app/
+    app.component.ts
+    app.config.ts
+    app.routes.ts
+    features/
+      customers/
+        routes.ts
+        models/
+          customer.models.ts
+        data-access/
+          customers-api.service.ts
+        state/
+          customers.store.ts
+        pages/
+          customer-list-page.component.ts
+        components/
+          customer-filter.component.ts
+          customer-table.component.ts
